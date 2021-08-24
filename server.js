@@ -1,6 +1,10 @@
-const express = require("express");
+const express = require('express');
 const app = express();
 const port = 3001;
 
-// Levantar servicio
-app.listen(port, () => console.log('Arranco la app'));
+// Rutas
+const gruposRoutes = require('./app/routes/grupos');
+
+app.use(gruposRoutes);
+
+app.listen(port, () => console.log('La app esta corriendo'));
