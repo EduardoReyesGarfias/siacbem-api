@@ -1,4 +1,4 @@
-const { dbConect } = require('../config/db');
+const { db } = require('../config/db');
 
 /**
  * Regresa todos los grupos existentes
@@ -8,7 +8,7 @@ const { dbConect } = require('../config/db');
 const getGrupos = async (req, res) =>{
     
     const query = "SELECT * FROM grupos";
-    const response = await dbConect.query(query);
+    const response = await db.query(query);
     res.status(200).json({error: 0, data: response.rows, msg: 'ok'});
     
 }
@@ -23,8 +23,8 @@ const getGruposBySubprograma = async (req, res) =>{
     const idSubprograma = Number(req.params._id);
     if(idSubprograma > 0){
         
-        const query = `SELECT * FROM grupos WHERE id_subprograma = $1`;
-        const response = await dbConect.query(query, [idSubprograma]);
+        const query = `SELECT * FROM grupos WHERE id_subprograma = CAST($1 AS integer)`;
+        const response = await db.query(query, [idSubprograma]);
 
         if(Number(response.rowCount) > 0)
             res.status(200).json({error: 0, data: response.rows, msg: 'ok'});

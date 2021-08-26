@@ -8,5 +8,5 @@ const configConnection = {
     port: '5432'
 };    
 
-const dbConect = new Pool( configConnection );
-module.exports = { dbConect };
+const db = new Pool( configConnection );
+module.exports = { db };

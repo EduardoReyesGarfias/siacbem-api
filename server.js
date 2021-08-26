@@ -3,7 +3,7 @@ const app = express();
 const port = 3001;
 
 // Rutas
-const gruposRoutes = require('./app/routes/grupos');
+const gruposRoutes = require('./app/routes/grupos.route');
 
 app.use(gruposRoutes);
 
